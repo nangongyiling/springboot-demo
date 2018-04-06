@@ -167,6 +167,7 @@ public class ZpController {
     }
     
     @RequestMapping(value="uploadFiles",method=RequestMethod.POST)
+    @ResponseBody
     public void uploadFiles(HttpServletRequest req){
     	List<MultipartFile> list = ((MultipartHttpServletRequest)req).getFiles("file");
     	BufferedOutputStream stream=null;
@@ -205,7 +206,7 @@ public class ZpController {
     	}
     }
     
-    @RequestMapping(value="/download",method=RequestMethod.POST)
+    @RequestMapping(value="/download",method=RequestMethod.GET)
     public void download(HttpServletResponse res){
 		String fileName="info.log";
 		res.setHeader("content-type", "application/octet-stream");
